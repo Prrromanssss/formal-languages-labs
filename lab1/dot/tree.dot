@@ -1,16 +1,3 @@
-// Армейский порядок
-// aaa → ε
-// bbb → bb
-// baab → baa
-// babab → aabab
-// bbbab → bbaab
-// abaaab → baba
-// ababbab → ababaab
-// bbaaaab → ε
-// bbabbaa → bbaaa
-// aabbabba → bbaa
-// aabaababb → bbb
-// bbabbabba → baababbaa
 
 graph G {
     node [style=filled, fontname="Arial"];
@@ -321,4 +308,3 @@ graph G {
     babbabbabaa -- babbabbabaaa [label="a"];
     babbabbabaa -- babbabbabaab [label="b"];
 }
-
