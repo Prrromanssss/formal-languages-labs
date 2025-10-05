@@ -1,4 +1,4 @@
-use rand::{rngs::StdRng, Rng, SeedableRng};
+use rand::Rng;
 use std::cmp::Ordering;
 
 const CASES: usize = 3000;
@@ -10,11 +10,13 @@ fn shortlex_cmp(a: &str, b: &str) -> Ordering {
     }
 }
 
-fn random_word(rng: &mut StdRng, len_min: usize, len_max: usize) -> String {
-    let len = rng.gen_range(len_min..=len_max);
+fn random_word(len_min: usize, len_max: usize) -> String {
+    let mut rng = rand::rng();
+
+    let len = rng.random_range(len_min..=len_max);
 
     (0..len)
-        .map(|_| if rng.gen_bool(0.5) { 'a' } else { 'b' })
+        .map(|_| if rng.random_bool(0.5) { 'a' } else { 'b' })
         .collect()
 }
 
@@ -91,20 +93,16 @@ fn reduce_to_eps_steps(src: &str) -> Vec<String> {
     out
 }
 
-fn ord_sym(o: Ordering) -> &'static str {
-    match o { 
-        Ordering::Less => "<", 
-        Ordering::Equal => "=", 
-        Ordering::Greater => ">" 
-    }
-}
-
 fn run_case(w1: &str, w2: &str) {
     let m = lcs_string(w1, w2);
     let n1 = w1.len() - m.len();
     let n2 = w2.len() - m.len();
 
-    let rel = ord_sym(shortlex_cmp(w1, w2));
+    let rel = match shortlex_cmp(w1, w2) {
+        Ordering::Less => "<",
+        Ordering::Equal => "=",
+        Ordering::Greater => ">",
+    };
 
     println!("w1: {w1}");
     println!("w2: {w2}  (w1 {rel} w2)");
@@ -134,11 +132,9 @@ fn run_case(w1: &str, w2: &str) {
 }
 
 fn main() {
-    let mut rng = StdRng::from_entropy();
-
     for i in 0..CASES {
-        let mut w1 = random_word(&mut rng, 3, 10);
-        let mut w2 = random_word(&mut rng, 3, 10);
+        let mut w1 = random_word(3, 10);
+        let mut w2 = random_word(3, 10);
 
         if shortlex_cmp(&w1, &w2).is_gt() { 
             std::mem::swap(&mut w1, &mut w2); 
