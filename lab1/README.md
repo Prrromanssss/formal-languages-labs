@@ -166,8 +166,197 @@ b → ε
 
 ---
 
-## 5) Инварианты и тестирование 
+## 5) Инварианты  
 
-TODO
+При `bbaaaab → ε` инварианты тривиальны
 
-----
+Любая строка переписывается в `ε`. Любые содержательные инварианты становятся бессмысленными: нужный фрагмент можно занулить.
+
+#### Исходная SRS (без `bbaaaab → ε`)
+
+```
+aaa         → ε
+bbb         → bb
+baab        → baa
+babab       → aabab
+bbbab       → bbaab
+abaaab      → baba
+ababbab     → ababaab
+bbabbaa     → bbaaa
+aabbabba    → bbaa
+aabaababb   → bbb
+bbabbabba   → baababbaa
+```
+
+
+#### Пополнение Кнута–Бендикса
+
+1. aa**a**babbab
+   – (aaa→ε) → babbab
+   – (ababbab→ababaab) → babaa
+   -> **babbab → babaa**
+
+2. bbabb**aa**aa
+   – (aaa→ε) → bbabba
+   – (bbabbaa→bbaaa) → bbaa
+   -> **bbabba → bbaa**
+
+3. bbabb**aa**a
+   – (aaa→ε) → bbabb
+   – (bbabbaa→bbaaa) → bba
+   -> **bbabb → bba**
+
+4. aabbabb**a**aa
+   – (aaa→ε) → aabba
+   – (aabbabba→bbaa) → bba
+   -> **aabba → bba**
+
+5. aa**aa**bbabba
+   – (aaa→ε) → abbaa
+   – (aabbabba→bbaa) → bbaa
+   -> **abbaa → bbaa**
+
+6. bbabbabb**a**aa
+   – (aaa→ε) → bbaa
+   – (bbabbabba→baababbaa) → bba
+   -> **bbaa → bba**
+
+7. bb**b**aab
+   – (bbb→bb) → bbab
+   – (baab→baa) → bba
+   -> **bbab → bba**
+
+8. ababba**b**bb
+   – (bbb→bb) → ababba
+   – (ababbab→ababaab) → ababaa
+   -> **ababba → ababaa**
+
+9. bb**b**babbaa
+   – (bbb→bb) → bba
+   – (bbabbaa→bbaaa) → bb
+   -> **bba → bb**
+
+10. baa**b**aab
+    – (baab→baa первое вхождение) → bab
+    – (baab→baa второе вхождение) → ba
+    -> **bab → ba**
+
+11. baba**b**aab
+    – (baab→baa) → ba
+    – (babab→aabab) → aabb
+    -> **aabb → ba**
+
+12. baa**b**abab
+    – (baab→baa) → bb
+    – (babab→aabab) → baa
+    -> **baa → bb**
+
+13. ba**bab**ab
+    – (babab→aabab, вхождение 0..4) → ba (bab→ba, baab→baa, baa→bb, aabb→ba)
+    – (babab→aabab, вхождение 2..6) → bb (baa→bb, bba→bb, bbab→bba)
+    -> **bb → ba**
+
+14. ba**bab**ab
+    – (babab→aabab, вхождение 0..4) → ba (как в п.13)
+    – (babab→aabab, вхождение 2..6) → aaba (bababab → baaabab → baaaba → bbaba(baa→bb) → bbba(bba→bb) → bb → ba)
+    -> **aaba → ba**
+
+15. b**aa**a
+    – (aaa→ε) → b
+    – (baa→bb) → ba
+    -> **ba → b**
+
+16. aab**a**aa
+    – (aaa→ε) → aab
+    – (aaba→ba) → b
+    -> **aab → b**
+
+17. aa**aa**ba
+    – (aaa→ε) → ab
+    – (aaba→ba) → b
+    -> **ab → b**
+
+
+Пополенная система
+
+```
+babbab → babaa
+bbabba → bbaa
+bbabb → bba
+aabba → bba
+abbaa → bbaa
+bbaa → bba
+bbab → bba
+ababba → ababaa
+bba → bb
+bab → ba
+aabb → ba
+baa → bb
+bb → ba
+aaba → ba
+ba → b
+aab → b
+ab → b
+```
+
+#### Минимальная система переписывания
+
+
+```
+aaa → ε
+ab  → b
+ba  → b
+bb  → b
+```
+
+<img src="img/automaton_new.png" alt="Рис. 3. Автомат" width="60%">
+
+#### Инварианты
+
+##### 1) Наличие `b`
+
+`B(w) = min(1, |b|)` ∈ {0,1}.
+
+Нельзя убрать последний `b` и нельзя породить `b` из одних `a`.
+
+##### 2) Остаток `|a| mod 3`
+
+```
+R(w) = |a| mod 3, если |b| = 0
+R(w) = 0          если |b| ≥ 1
+```
+
+Если `|b|=0`, действует только `aaa <-> ε` (±3 по `|a|`).
+Если `|b|≥1`, значение зафиксировано нулём и не меняется.
+
+
+###### 3) ДКА из 4 состояний
+
+Финальное состояние — инвариант (класс слова).
+
+`E` → эквивалентно `ε`
+`A` → эквивалентно `a`
+`AA` → эквивалентно `aa`
+`B` → эквивалентно `b`.
+
+###### 4) Коммутирующие матрицы в ℤ₇
+
+Каждой букве сопоставляем матрицу и перемножаем по порядку. Произведение не меняется при переписывании.
+
+Выбор матриц (диагональные, коммутируют):
+
+```
+A = diag(2, 1)
+B = diag(0, 1)
+```
+
+Отображение: `M(a)=A`, `M(b)=B`. Для слова `w=w₁...wₙ`: `M(w)=M(w₁)*...*M(wₙ)` (все умножения по модулю 7).
+
+* `A^3 = I`  (отражает `aaa <-> ε`);
+* `B^2 = B`  (отражает `bb <-> b`);
+* `AB = BA = B` (отражает `ab <-> b` и `ba <-> b`).
+
+
+Если в слове есть `b`, в произведении появляется множитель `B` и всё схлопывается в `B`.
+Если `b` нет, `M(w) и зависит только от `|a| mod 3.
+
