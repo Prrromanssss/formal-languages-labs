@@ -191,90 +191,91 @@ bbabbabba   → baababbaa
 
 #### Пополнение Кнута–Бендикса
 
-1. aa**a**babbab
-   – (aaa→ε) → babbab
-   – (ababbab→ababaab) → babaa
-   -> **babbab → babaa**
 
-2. bbabb**aa**aa
-   – (aaa→ε) → bbabba
-   – (bbabbaa→bbaaa) → bbaa
-   -> **bbabba → bbaa**
+1. aa**a**babbab  
+   – (aaa→ε) → babbab  
+   – (ababbab→ababaab) → babaa  
+   -> **babbab → babaa**  
 
-3. bbabb**aa**a
-   – (aaa→ε) → bbabb
-   – (bbabbaa→bbaaa) → bba
-   -> **bbabb → bba**
+2. bbabb**aa**aa  
+   – (aaa→ε) → bbabba  
+   – (bbabbaa→bbaaa) → bbaa  
+   -> **bbabba → bbaa**  
 
-4. aabbabb**a**aa
-   – (aaa→ε) → aabba
-   – (aabbabba→bbaa) → bba
-   -> **aabba → bba**
+3. bbabb**aa**a  
+   – (aaa→ε) → bbabb  
+   – (bbabbaa→bbaaa) → bba  
+   -> **bbabb → bba**  
 
-5. aa**aa**bbabba
-   – (aaa→ε) → abbaa
-   – (aabbabba→bbaa) → bbaa
-   -> **abbaa → bbaa**
+4. aabbabb**a**aa  
+   – (aaa→ε) → aabba  
+   – (aabbabba→bbaa) → bba  
+   -> **aabba → bba**  
 
-6. bbabbabb**a**aa
-   – (aaa→ε) → bbaa
-   – (bbabbabba→baababbaa) → bba
-   -> **bbaa → bba**
+5. aa**aa**bbabba  
+   – (aaa→ε) → abbaa  
+   – (aabbabba→bbaa) → bbaa  
+   -> **abbaa → bbaa**  
 
-7. bb**b**aab
-   – (bbb→bb) → bbab
-   – (baab→baa) → bba
-   -> **bbab → bba**
+6. bbabbabb**a**aa  
+   – (aaa→ε) → bbaa  
+   – (bbabbabba→baababbaa) → bba  
+   -> **bbaa → bba**  
 
-8. ababba**b**bb
-   – (bbb→bb) → ababba
-   – (ababbab→ababaab) → ababaa
-   -> **ababba → ababaa**
+7. bb**b**aab  
+   – (bbb→bb) → bbab  
+   – (baab→baa) → bba  
+   -> **bbab → bba**  
 
-9. bb**b**babbaa
-   – (bbb→bb) → bba
-   – (bbabbaa→bbaaa) → bb
-   -> **bba → bb**
+8. ababba**b**bb  
+   – (bbb→bb) → ababba  
+   – (ababbab→ababaab) → ababaa  
+   -> **ababba → ababaa**  
 
-10. baa**b**aab
-    – (baab→baa первое вхождение) → bab
-    – (baab→baa второе вхождение) → ba
-    -> **bab → ba**
+9. bb**b**babbaa  
+   – (bbb→bb) → bba  
+   – (bbabbaa→bbaaa) → bb  
+   -> **bba → bb**  
 
-11. baba**b**aab
-    – (baab→baa) → ba
-    – (babab→aabab) → aabb
-    -> **aabb → ba**
+10. baa**b**aab  
+    – (baab→baa первое вхождение) → bab  
+    – (baab→baa второе вхождение) → ba  
+    -> **bab → ba**  
 
-12. baa**b**abab
-    – (baab→baa) → bb
-    – (babab→aabab) → baa
-    -> **baa → bb**
+11. baba**b**aab  
+    – (baab→baa) → ba  
+    – (babab→aabab) → aabb  
+    -> **aabb → ba**  
 
-13. ba**bab**ab
-    – (babab→aabab, вхождение 0..4) → ba (bab→ba, baab→baa, baa→bb, aabb→ba)
-    – (babab→aabab, вхождение 2..6) → bb (baa→bb, bba→bb, bbab→bba)
-    -> **bb → ba**
+12. baa**b**abab  
+    – (baab→baa) → bb  
+    – (babab→aabab) → baa  
+    -> **baa → bb**  
 
-14. ba**bab**ab
-    – (babab→aabab, вхождение 0..4) → ba (как в п.13)
-    – (babab→aabab, вхождение 2..6) → aaba (bababab → baaabab → baaaba → bbaba(baa→bb) → bbba(bba→bb) → bb → ba)
-    -> **aaba → ba**
+13. ba**bab**ab  
+    – (babab→aabab, вхождение 0..4) → ba (bab→ba, baab→baa, baa→bb, aabb→ba)  
+    – (babab→aabab, вхождение 2..6) → bb (baa→bb, bba→bb, bbab→bba)  
+    -> **bb → ba**  
 
-15. b**aa**a
-    – (aaa→ε) → b
-    – (baa→bb) → ba
-    -> **ba → b**
+14. ba**bab**ab  
+    – (babab→aabab, вхождение 0..4) → ba (как в п.13)  
+    – (babab→aabab, вхождение 2..6) → aaba (bababab → baaabab → baaaba → bbaba(baa→bb) → bbba(bba→bb) → bb → ba)  
+    -> **aaba → ba**  
 
-16. aab**a**aa
-    – (aaa→ε) → aab
-    – (aaba→ba) → b
-    -> **aab → b**
+15. b**aa**a  
+    – (aaa→ε) → b  
+    – (baa→bb) → ba  
+    -> **ba → b**  
 
-17. aa**aa**ba
-    – (aaa→ε) → ab
-    – (aaba→ba) → b
-    -> **ab → b**
+16. aab**a**aa  
+    – (aaa→ε) → aab  
+    – (aaba→ba) → b  
+    -> **aab → b**  
+
+17. aa**aa**ba  
+    – (aaa→ε) → ab  
+    – (aaba→ba) → b  
+    -> **ab → b**  
 
 
 Пополенная система
