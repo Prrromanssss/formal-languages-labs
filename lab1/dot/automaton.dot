@@ -1,0 +1,9 @@
+digraph G {
+  rankdir=LR;
+  node [shape=circle, fontsize=18];
+  q0 [label="ε"];
+  node [shape=circle];
+
+  q0 -> q0 [label="a"];
+  q0 -> q0 [label="b"];
+}
