@@ -1,0 +1,110 @@
+digraph MinDFA {
+    rankdir=LR;
+    node [shape = doublecircle]; p10 p13 p16 p17;
+    node [shape = circle];
+
+    "" [shape=none,label=""];
+    "" -> p0;
+
+    p0  [label="p0: {q0}"];
+    p1  [label="p1: {q1}"];
+    p2  [label="p2: {q2}"];
+    p3  [label="p3: {q3}"];
+    p4  [label="p4: {q5}"];
+    p5  [label="p5: {q4}"];
+    p6  [label="p6: {q6}"];
+    p7  [label="p7: {q8}"];
+    p8  [label="p8: {q10,q26}"];
+    p9  [label="p9: {q12,q24}"];
+    p10 [label="p10: {q9}"];
+    p11 [label="p11: {q7}"];
+    p12 [label="p12: {q11}"];
+    p13 [label="p13: {q14,q16,q19,q22,q23,q25}"];
+    p14 [label="p14: {q15}"];
+    p15 [label="p15: {q13}"];
+    p16 [label="p16: {q18}"];
+    p17 [label="p17: {q17}"];
+    p18 [label="p18: {q20}"];
+    p19 [label="p19: {q21}"];
+
+    // переходы
+    p0  -> p1  [label="a"];
+    p0  -> p2  [label="b"];
+    p0  -> p3  [label="c"];
+
+    p1  -> p4  [label="a"];
+    p1  -> p5  [label="b"];
+    p1  -> p3  [label="c"];
+
+    p2  -> p4  [label="a"];
+    p2  -> p2  [label="b"];
+    p2  -> p6  [label="c"];
+
+    p3  -> p4  [label="a"];
+    p3  -> p2  [label="b"];
+    p3  -> p3  [label="c"];
+
+    p4  -> p4  [label="a"];
+    p4  -> p7  [label="b"];
+    p4  -> p3  [label="c"];
+
+    p5  -> p8  [label="a"];
+    p5  -> p9  [label="b"];
+    p5  -> p10 [label="c"];
+
+    p6  -> p11 [label="a"];
+    p6  -> p6  [label="b"];
+    p6  -> p6  [label="c"];
+
+    p7  -> p8  [label="a"];
+    p7  -> p9  [label="b"];
+    p7  -> p12 [label="c"];
+
+    p8  -> p8  [label="a"];
+    p8  -> p9  [label="b"];
+    p8  -> p8  [label="c"];
+
+    p9  -> p8  [label="a"];
+    p9  -> p9  [label="b"];
+    p9  -> p13 [label="c"];
+
+    p10 -> p14 [label="a"];
+    p10 -> p15 [label="b"];
+    p10 -> p12 [label="c"];
+
+    p11 -> p11 [label="a"];
+    p11 -> p16 [label="b"];
+    p11 -> p6  [label="c"];
+
+    p12 -> p14 [label="a"];
+    p12 -> p15 [label="b"];
+    p12 -> p12 [label="c"];
+
+    p13 -> p13 [label="a"];
+    p13 -> p13 [label="b"];
+    p13 -> p13 [label="c"];
+
+    p14 -> p14 [label="a"];
+    p14 -> p17 [label="b"];
+    p14 -> p12 [label="c"];
+
+    p15 -> p14 [label="a"];
+    p15 -> p15 [label="b"];
+    p15 -> p13 [label="c"];
+
+    p16 -> p16 [label="a"];
+    p16 -> p18 [label="b"];
+    p16 -> p19 [label="c"];
+
+    p17 -> p16 [label="a"];
+    p17 -> p18 [label="b"];
+    p17 -> p13 [label="c"];
+
+    p18 -> p8  [label="a"];
+    p18 -> p17 [label="b"];
+    p18 -> p13 [label="c"];
+
+    p19 -> p8  [label="a"];
+    p19 -> p9  [label="b"];
+    p19 -> p16 [label="c"];
+}
