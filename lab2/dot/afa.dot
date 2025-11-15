@@ -1,0 +1,77 @@
+digraph AFA_ab {
+    rankdir=LR;
+
+    node [shape = doublecircle]; 5 10 17 r2;
+    node [shape = circle];
+
+    "" [shape=none,label=""];
+    "" -> s;
+
+    // Универсальное состояние
+    s [shape=box,label="s (∀)"];
+
+    s -> 0  [label="ε"];   // исходный НКА
+    s -> r0 [label="ε"];   // автомат для "ab"
+
+    r0 -> r1 [label="a"];
+    r0 -> r0 [label="b,c"];
+
+    r1 -> r2 [label="b"];
+    r1 -> r1 [label="a"];
+    r1 -> r0 [label="c"];
+
+    r2 -> r2 [label="a,b,c"];
+
+    0 -> 1  [label="ε"];
+    0 -> 6  [label="ε"];
+    0 -> 14 [label="ε"];
+
+    1 -> 2 [label="a"];
+    1 -> 1 [label="b"];
+    1 -> 1 [label="c"];
+
+    2 -> 3 [label="b"];
+    2 -> 2 [label="a"];
+    2 -> 1 [label="c"];
+
+    3 -> 4 [label="b"];
+    3 -> 3 [label="a"];
+    3 -> 3 [label="c"];
+
+    4 -> 5 [label="c"];
+    4 -> 4 [label="b"];
+    4 -> 3 [label="a"];
+
+    5 -> 5 [label="a"];
+    5 -> 5 [label="b"];
+    5 -> 5 [label="c"];
+
+    6 -> 7 [label="b"];
+    6 -> 6 [label="a"];
+    6 -> 6 [label="c"];
+
+    7 -> 8 [label="c"];
+    7 -> 7 [label="b"];
+    7 -> 6 [label="a"];
+
+    8 -> 9 [label="a"];
+    8 -> 8 [label="b"];
+    8 -> 8 [label="c"];
+
+    9 -> 10 [label="b"];
+    9 -> 9  [label="a"];
+    9 -> 8  [label="c"];
+
+    10 -> 10 [label="a"];
+    10 -> 11 [label="b"];
+    10 -> 12 [label="c"];
+
+    11 -> 10 [label="b"];
+    11 -> 10 [label="c"];
+
+    12 -> 10 [label="c"];
+
+    14 -> 15 [label="a"];
+    15 -> 16 [label="b"];
+    16 -> 17 [label="c"];
+}
