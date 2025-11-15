@@ -1,117 +1,189 @@
-digraph DFA {
+digraph DFA_full {
     rankdir=LR;
-    node [shape = doublecircle]; q25 q18 q17 q14 q16 q22 q19 q23 q9;
+    node [shape = doublecircle]; q10 q15 q19 q20 q21 q22 q23 q24 q27 q28 q29 q30 q31 q32 q33 q34 q35;
     node [shape = circle];
-    "" [shape=none,label=""];
+
+    "" [shape=none];
     "" -> q0;
 
-    q0 [label="q0: {0,1,6,14}"];
-    q26 [label="q26: {3}"];
-    q24 [label="q24: {4}"];
-    q25 [label="q25: {5}"];
-    q3 [label="q3: {1,6}"];
-    q2 [label="q2: {1,7}"];
-    q6 [label="q6: {1,8}"];
-    q5 [label="q5: {2,6}"];
-    q7 [label="q7: {2,9}"];
-    q10 [label="q10: {3,6}"];
-    q8 [label="q8: {3,7}"];
-    q11 [label="q11: {3,8}"];
-    q15 [label="q15: {3,9}"];
-    q18 [label="q18: {3,10}"];
-    q21 [label="q21: {3,12}"];
-    q12 [label="q12: {4,7}"];
-    q13 [label="q13: {4,8}"];
-    q17 [label="q17: {4,10}"];
-    q20 [label="q20: {4,11}"];
-    q14 [label="q14: {5,8}"];
-    q16 [label="q16: {5,9}"];
-    q22 [label="q22: {5,10}"];
-    q19 [label="q19: {5,11}"];
-    q23 [label="q23: {5,12}"];
-    q1 [label="q1: {2,6,15}"];
-    q4 [label="q4: {3,7,16}"];
-    q9 [label="q9: {3,8,17}"];
+    q0 [label="q0: {0, 1, 6, 17}"];
+    q1 [label="q1: {2, 6, 18}"];
+    q2 [label="q2: {1, 7}"];
+    q3 [label="q3: {1, 6}"];
+    q4 [label="q4: {2, 6}"];
+    q5 [label="q5: {3, 7, 19}"];
+    q6 [label="q6: {1, 8, 12}"];
+    q7 [label="q7: {3, 7}"];
+    q8 [label="q8: {3, 6}"];
+    q9 [label="q9: {4, 7}"];
+    q10 [label="q10: {3, 8, 12, 20}"];
+    q11 [label="q11: {2, 9, 12, 13}"];
+    q12 [label="q12: {1, 10, 12}"];
+    q13 [label="q13: {1, 11, 12}"];
+    q14 [label="q14: {3, 8, 12}"];
+    q15 [label="q15: {5, 8, 12}"];
+    q16 [label="q16: {3, 9, 12, 13}"];
+    q17 [label="q17: {4, 10, 12}"];
+    q18 [label="q18: {3, 11, 12}"];
+    q19 [label="q19: {3, 10, 12, 14}"];
+    q20 [label="q20: {5, 9, 12, 13}"];
+    q21 [label="q21: {5, 10, 12}"];
+    q22 [label="q22: {5, 11, 12}"];
+    q23 [label="q23: {4, 10, 12, 14}"];
+    q24 [label="q24: {3, 9, 12, 13, 14}"];
+    q25 [label="q25: {4, 10, 12, 15}"];
+    q26 [label="q26: {3, 11, 12, 16}"];
+    q27 [label="q27: {5, 10, 12, 14}"];
+    q28 [label="q28: {5, 11, 12, 16}"];
+    q29 [label="q29: {4, 10, 12, 14, 15}"];
+    q30 [label="q30: {5, 11, 12, 14}"];
+    q31 [label="q31: {3, 11, 12, 14}"];
+    q32 [label="q32: {5, 9, 12, 13, 14}"];
+    q33 [label="q33: {5, 10, 12, 15}"];
+    q34 [label="q34: {5, 11, 12, 14, 16}"];
+    q35 [label="q35: {5, 10, 12, 14, 15}"];
 
     q0 -> q1 [label="a"];
     q0 -> q2 [label="b"];
     q0 -> q3 [label="c"];
-    q26 -> q26 [label="a"];
-    q26 -> q24 [label="b"];
-    q26 -> q26 [label="c"];
-    q24 -> q26 [label="a"];
-    q24 -> q24 [label="b"];
-    q24 -> q25 [label="c"];
-    q25 -> q25 [label="a"];
-    q25 -> q25 [label="b"];
-    q25 -> q25 [label="c"];
-    q3 -> q5 [label="a"];
-    q3 -> q2 [label="b"];
-    q3 -> q3 [label="c"];
-    q2 -> q5 [label="a"];
+
+    q1 -> q4 [label="a"];
+    q1 -> q5 [label="b"];
+    q1 -> q3 [label="c"];
+
+    q2 -> q4 [label="a"];
     q2 -> q2 [label="b"];
     q2 -> q6 [label="c"];
-    q6 -> q7 [label="a"];
-    q6 -> q6 [label="b"];
-    q6 -> q6 [label="c"];
-    q5 -> q5 [label="a"];
-    q5 -> q8 [label="b"];
-    q5 -> q3 [label="c"];
-    q7 -> q7 [label="a"];
-    q7 -> q18 [label="b"];
-    q7 -> q6 [label="c"];
-    q10 -> q10 [label="a"];
-    q10 -> q12 [label="b"];
-    q10 -> q10 [label="c"];
-    q8 -> q10 [label="a"];
-    q8 -> q12 [label="b"];
-    q8 -> q11 [label="c"];
-    q11 -> q15 [label="a"];
-    q11 -> q13 [label="b"];
-    q11 -> q11 [label="c"];
-    q15 -> q15 [label="a"];
-    q15 -> q17 [label="b"];
-    q15 -> q11 [label="c"];
-    q18 -> q18 [label="a"];
-    q18 -> q20 [label="b"];
-    q18 -> q21 [label="c"];
-    q21 -> q26 [label="a"];
-    q21 -> q24 [label="b"];
-    q21 -> q18 [label="c"];
-    q12 -> q10 [label="a"];
+
+    q3 -> q4 [label="a"];
+    q3 -> q2 [label="b"];
+    q3 -> q3 [label="c"];
+
+    q4 -> q4 [label="a"];
+    q4 -> q7 [label="b"];
+    q4 -> q3 [label="c"];
+
+    q5 -> q8 [label="a"];
+    q5 -> q9 [label="b"];
+    q5 -> q10 [label="c"];
+
+    q6 -> q11 [label="a"];
+    q6 -> q12 [label="b"];
+    q6 -> q13 [label="c"];
+
+    q7 -> q8 [label="a"];
+    q7 -> q9 [label="b"];
+    q7 -> q14 [label="c"];
+
+    q8 -> q8 [label="a"];
+    q8 -> q9 [label="b"];
+    q8 -> q8 [label="c"];
+
+    q9 -> q8 [label="a"];
+    q9 -> q9 [label="b"];
+    q9 -> q15 [label="c"];
+
+    q10 -> q16 [label="a"];
+    q10 -> q17 [label="b"];
+    q10 -> q18 [label="c"];
+
+    q11 -> q11 [label="a"];
+    q11 -> q19 [label="b"];
+    q11 -> q13 [label="c"];
+
+    q12 -> q11 [label="a"];
     q12 -> q12 [label="b"];
-    q12 -> q14 [label="c"];
-    q13 -> q15 [label="a"];
-    q13 -> q13 [label="b"];
-    q13 -> q14 [label="c"];
-    q17 -> q18 [label="a"];
-    q17 -> q20 [label="b"];
-    q17 -> q23 [label="c"];
-    q20 -> q26 [label="a"];
-    q20 -> q17 [label="b"];
-    q20 -> q22 [label="c"];
+    q12 -> q13 [label="c"];
+
+    q13 -> q11 [label="a"];
+    q13 -> q12 [label="b"];
+    q13 -> q13 [label="c"];
+
     q14 -> q16 [label="a"];
-    q14 -> q14 [label="b"];
-    q14 -> q14 [label="c"];
+    q14 -> q17 [label="b"];
+    q14 -> q18 [label="c"];
+
+    q15 -> q20 [label="a"];
+    q15 -> q21 [label="b"];
+    q15 -> q22 [label="c"];
+
     q16 -> q16 [label="a"];
-    q16 -> q22 [label="b"];
-    q16 -> q14 [label="c"];
-    q22 -> q22 [label="a"];
-    q22 -> q19 [label="b"];
-    q22 -> q23 [label="c"];
-    q19 -> q25 [label="a"];
-    q19 -> q22 [label="b"];
-    q19 -> q22 [label="c"];
-    q23 -> q25 [label="a"];
+    q16 -> q23 [label="b"];
+    q16 -> q18 [label="c"];
+
+    q17 -> q16 [label="a"];
+    q17 -> q17 [label="b"];
+    q17 -> q22 [label="c"];
+
+    q18 -> q16 [label="a"];
+    q18 -> q17 [label="b"];
+    q18 -> q18 [label="c"];
+
+    q19 -> q24 [label="a"];
+    q19 -> q25 [label="b"];
+    q19 -> q26 [label="c"];
+
+    q20 -> q20 [label="a"];
+    q20 -> q27 [label="b"];
+    q20 -> q22 [label="c"];
+
+    q21 -> q20 [label="a"];
+    q21 -> q21 [label="b"];
+    q21 -> q22 [label="c"];
+
+    q22 -> q20 [label="a"];
+    q22 -> q21 [label="b"];
+    q22 -> q22 [label="c"];
+
+    q23 -> q24 [label="a"];
     q23 -> q25 [label="b"];
-    q23 -> q22 [label="c"];
-    q1 -> q5 [label="a"];
-    q1 -> q4 [label="b"];
-    q1 -> q3 [label="c"];
-    q4 -> q10 [label="a"];
-    q4 -> q12 [label="b"];
-    q4 -> q9 [label="c"];
-    q9 -> q15 [label="a"];
-    q9 -> q13 [label="b"];
-    q9 -> q11 [label="c"];
+    q23 -> q28 [label="c"];
+
+    q24 -> q24 [label="a"];
+    q24 -> q29 [label="b"];
+    q24 -> q26 [label="c"];
+
+    q25 -> q16 [label="a"];
+    q25 -> q23 [label="b"];
+    q25 -> q30 [label="c"];
+
+    q26 -> q16 [label="a"];
+    q26 -> q17 [label="b"];
+    q26 -> q31 [label="c"];
+
+    q27 -> q32 [label="a"];
+    q27 -> q33 [label="b"];
+    q27 -> q28 [label="c"];
+
+    q28 -> q20 [label="a"];
+    q28 -> q21 [label="b"];
+    q28 -> q30 [label="c"];
+
+    q29 -> q24 [label="a"];
+    q29 -> q29 [label="b"];
+    q29 -> q34 [label="c"];
+
+    q30 -> q32 [label="a"];
+    q30 -> q33 [label="b"];
+    q30 -> q28 [label="c"];
+
+    q31 -> q24 [label="a"];
+    q31 -> q25 [label="b"];
+    q31 -> q26 [label="c"];
+
+    q32 -> q32 [label="a"];
+    q32 -> q35 [label="b"];
+    q32 -> q28 [label="c"];
+
+    q33 -> q20 [label="a"];
+    q33 -> q27 [label="b"];
+    q33 -> q30 [label="c"];
+
+    q34 -> q32 [label="a"];
+    q34 -> q33 [label="b"];
+    q34 -> q34 [label="c"];
+
+    q35 -> q32 [label="a"];
+    q35 -> q35 [label="b"];
+    q35 -> q34 [label="c"];
 }

@@ -1,7 +1,7 @@
 digraph NFA {
     rankdir=LR;
 
-    node [shape = doublecircle]; 5 10 17;
+    node [shape = doublecircle]; 5 14 20;
     node [shape = circle];
 
     "" [shape=none,label=""];
@@ -9,7 +9,8 @@ digraph NFA {
 
     0 -> 1  [label="ε"];   // (a*b*c*)*ab(a*b*c*)*bc(a|b|c)*
     0 -> 6  [label="ε"];   // (a|b|c)*bc(a*b*c*)*ab(a|bc|cc|bb)*
-    0 -> 14 [label="ε"];   // abc
+    0 -> 17 [label="ε"];   // abc
+
 
     1 -> 2 [label="a"];
     1 -> 1 [label="b"];
@@ -31,7 +32,6 @@ digraph NFA {
     5 -> 5 [label="b"];
     5 -> 5 [label="c"];
 
-
     6 -> 7 [label="b"];
     6 -> 6 [label="a"];
     6 -> 6 [label="c"];
@@ -40,24 +40,39 @@ digraph NFA {
     7 -> 7 [label="b"];
     7 -> 6 [label="a"];
 
-    8 -> 9 [label="a"];
-    8 -> 8 [label="b"];
-    8 -> 8 [label="c"];
+    8  -> 9  [label="a"];
+    8  -> 10 [label="b"];
+    8  -> 11 [label="c"];
+    8  -> 12 [label="ε"];
 
-    9 -> 10 [label="b"];
-    9 -> 9  [label="a"];
-    9 -> 8  [label="c"];
+    9  -> 9  [label="a"];
+    9  -> 10 [label="b"];
+    9  -> 11 [label="c"];
+    9  -> 12 [label="ε"];
 
-    10 -> 10 [label="a"];  
-    10 -> 11 [label="b"];  
-    10 -> 12 [label="c"]; 
+    10 -> 9  [label="a"];
+    10 -> 10 [label="b"];
+    10 -> 11 [label="c"];
+    10 -> 12 [label="ε"];
 
-    11 -> 10 [label="b"];  
-    11 -> 10 [label="c"];  
+    11 -> 9  [label="a"];
+    11 -> 10 [label="b"];
+    11 -> 11 [label="c"];
+    11 -> 12 [label="ε"];
 
-    12 -> 10 [label="c"]; 
+    12 -> 13 [label="a"];
+    13 -> 14 [label="b"];
 
-    14 -> 15 [label="a"];     
-    15 -> 16 [label="b"];     
-    16 -> 17 [label="c"];     
+    14 -> 14 [label="a"];  
+    14 -> 15 [label="b"];  
+    14 -> 16 [label="c"]; 
+
+    15 -> 14 [label="b"];  
+    15 -> 14 [label="c"];  
+
+    16 -> 14 [label="c"]; 
+
+    17 -> 18 [label="a"];     
+    18 -> 19 [label="b"];     
+    19 -> 20 [label="c"];     
 }

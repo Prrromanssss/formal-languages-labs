@@ -1,33 +1,35 @@
-digraph MinDFA {
+digraph DFA_min {
     rankdir=LR;
-    node [shape = doublecircle]; p10 p13 p16 p17;
+
+    node [shape = doublecircle]; p10 p13 p16 p17 p18 p21;
     node [shape = circle];
 
-    "" [shape=none,label=""];
+    "" [shape=none];
     "" -> p0;
 
     p0  [label="p0: {q0}"];
     p1  [label="p1: {q1}"];
     p2  [label="p2: {q2}"];
     p3  [label="p3: {q3}"];
-    p4  [label="p4: {q5}"];
-    p5  [label="p5: {q4}"];
-    p6  [label="p6: {q6}"];
-    p7  [label="p7: {q8}"];
-    p8  [label="p8: {q10,q26}"];
-    p9  [label="p9: {q12,q24}"];
-    p10 [label="p10: {q9}"];
-    p11 [label="p11: {q7}"];
-    p12 [label="p12: {q11}"];
-    p13 [label="p13: {q14,q16,q19,q22,q23,q25}"];
-    p14 [label="p14: {q15}"];
-    p15 [label="p15: {q13}"];
-    p16 [label="p16: {q18}"];
-    p17 [label="p17: {q17}"];
-    p18 [label="p18: {q20}"];
-    p19 [label="p19: {q21}"];
+    p4  [label="p4: {q4}"];
+    p5  [label="p5: {q5}"];
+    p6  [label="p6: {q6, q12, q13}"];
+    p7  [label="p7: {q7}"];
+    p8  [label="p8: {q8}"];
+    p9  [label="p9: {q9}"];
+    p10 [label="p10: {q10}"];
+    p11 [label="p11: {q11}"];
+    p12 [label="p12: {q14, q18}"];
+    p13 [label="p13: {q15, q20, q21, q22, q27, q28, q30, q32, q33, q34, q35}"];
+    p14 [label="p14: {q16}"];
+    p15 [label="p15: {q17}"];
+    p16 [label="p16: {q19, q31}"];
+    p17 [label="p17: {q23}"];
+    p18 [label="p18: {q24}"];
+    p19 [label="p19: {q25}"];
+    p20 [label="p20: {q26}"];
+    p21 [label="p21: {q29}"];
 
-    // переходы
     p0  -> p1  [label="a"];
     p0  -> p2  [label="b"];
     p0  -> p3  [label="c"];
@@ -92,19 +94,27 @@ digraph MinDFA {
     p15 -> p15 [label="b"];
     p15 -> p13 [label="c"];
 
-    p16 -> p16 [label="a"];
-    p16 -> p18 [label="b"];
-    p16 -> p19 [label="c"];
+    p16 -> p18 [label="a"];
+    p16 -> p19 [label="b"];
+    p16 -> p20 [label="c"];
 
-    p17 -> p16 [label="a"];
-    p17 -> p18 [label="b"];
+    p17 -> p18 [label="a"];
+    p17 -> p19 [label="b"];
     p17 -> p13 [label="c"];
 
-    p18 -> p8  [label="a"];
-    p18 -> p17 [label="b"];
-    p18 -> p13 [label="c"];
+    p18 -> p18 [label="a"];
+    p18 -> p21 [label="b"];
+    p18 -> p20 [label="c"];
 
-    p19 -> p8  [label="a"];
-    p19 -> p9  [label="b"];
-    p19 -> p16 [label="c"];
+    p19 -> p14 [label="a"];
+    p19 -> p17 [label="b"];
+    p19 -> p13 [label="c"];
+
+    p20 -> p14 [label="a"];
+    p20 -> p15 [label="b"];
+    p20 -> p16 [label="c"];
+
+    p21 -> p18 [label="a"];
+    p21 -> p21 [label="b"];
+    p21 -> p13 [label="c"];
 }
