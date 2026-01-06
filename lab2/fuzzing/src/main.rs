@@ -1,26 +1,12 @@
 use rand::rngs::StdRng;
 use rand::{Rng, SeedableRng};
-use regex::Regex;
 use std::collections::HashSet;
+use fancy_regex::Regex as FancyRegex;
 
 
-fn accepts_regex(re: &Regex, word: &str) -> bool {
-    re.is_match(word)
+fn accepts_regex(re: &FancyRegex, word: &str) -> bool {
+    re.is_match(word).unwrap_or(false)
 }
-
-// (?=[abc]*$) в Rust отсутсвует - использую is_abc_only
-fn is_abc_only(word: &str) -> bool {
-    word.chars().all(|c| c == 'a' || c == 'b' || c == 'c')
-}
-
-fn accepts_ext_regex(re: &Regex, word: &str) -> bool {
-    if !is_abc_only(word) {
-        return false;
-    }
-    re.is_match(word)
-}
-
-
 
 const NFA_START: usize = 0;
 const NFA_ACCEPT: [usize; 3] = [5, 9, 14];
@@ -234,13 +220,14 @@ fn random_word(rng: &mut StdRng, max_len: usize) -> String {
 
 
 fn main() {
-    let re_base = Regex::new(
+    let re_base = FancyRegex::new(
         r"^((a*b*c*)*ab(a*b*c*)*bc(a|b|c)*|(a|b|c)*bc(a*b*c*)*ab(a|bc|cc|bb)*|abc)$",
     )
     .unwrap();
 
-    // расширенная — без lookahead, он вынесен в is_abc_only
-    let re_ext = Regex::new(r"^(.*ab.*bc.*|.*bc.*ab(a|bc|cc|bb)*|abc)$").unwrap();
+    let re_ext = FancyRegex::new(
+        r"^(?=[abc]*$)(?:(?=.*ab.*bc)[abc]*|(?!(?=.*ab.*bc))[abc]*bc[abc]*ab(?:a|bc|cc|bb)*|abc)$"
+    ).unwrap();
 
     let num_tests = 20_000;
     let max_len = 8;
@@ -251,7 +238,7 @@ fn main() {
         let w = random_word(&mut rng, max_len);
 
         let r1 = accepts_regex(&re_base, &w);
-        let r2 = accepts_ext_regex(&re_ext, &w);
+        let r2 = accepts_regex(&re_ext, &w);
         let r3 = accepts_nfa(&w);
         let r4 = accepts_dfa(&w);
         let r5 = accepts_afa(&w);
