@@ -214,7 +214,10 @@ fn accepts_dfa(word: &str) -> bool {
 }
 
 fn accepts_afa(word: &str) -> bool {
-    accepts_nfa(word) && word.contains("ab")
+    accepts_nfa(word)
+        && word.contains("ab")
+        && word.contains("bc")
+        && word.len() >= 3
 }
 
 fn random_word(rng: &mut StdRng, max_len: usize) -> String {
