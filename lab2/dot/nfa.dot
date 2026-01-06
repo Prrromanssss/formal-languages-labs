@@ -1,78 +1,52 @@
 digraph NFA {
     rankdir=LR;
 
-    node [shape = doublecircle]; 5 14 20;
+    node [shape = doublecircle]; 5 9 14;
     node [shape = circle];
 
     "" [shape=none,label=""];
     "" -> 0;
 
-    0 -> 1  [label="ε"];   // (a*b*c*)*ab(a*b*c*)*bc(a|b|c)*
-    0 -> 6  [label="ε"];   // (a|b|c)*bc(a*b*c*)*ab(a|bc|cc|bb)*
-    0 -> 17 [label="ε"];   // abc
+    0 -> 1  [label="ε"];   
+    0 -> 12 [label="a"];  
 
+    12 -> 13 [label="b"];
+    13 -> 14 [label="c"];
 
-    1 -> 2 [label="a"];
+    1 -> 1 [label="a"];
     1 -> 1 [label="b"];
     1 -> 1 [label="c"];
 
-    2 -> 3 [label="b"];
-    2 -> 2 [label="a"];
-    2 -> 1 [label="c"];
+    1 -> 2 [label="a"];  
+    2 -> 3 [label="b"];  
 
-    3 -> 4 [label="b"];
     3 -> 3 [label="a"];
+    3 -> 3 [label="b"];
     3 -> 3 [label="c"];
 
-    4 -> 5 [label="c"];
-    4 -> 4 [label="b"];
-    4 -> 3 [label="a"];
+    3 -> 4 [label="b"];  
+    4 -> 5 [label="c"];  
 
     5 -> 5 [label="a"];
     5 -> 5 [label="b"];
     5 -> 5 [label="c"];
 
-    6 -> 7 [label="b"];
-    6 -> 6 [label="a"];
-    6 -> 6 [label="c"];
+    1 -> 6 [label="b"];  
+    6 -> 7 [label="c"];  
 
-    7 -> 8 [label="c"];
+    7 -> 7 [label="a"];
     7 -> 7 [label="b"];
-    7 -> 6 [label="a"];
+    7 -> 7 [label="c"];
 
-    8  -> 9  [label="a"];
-    8  -> 10 [label="b"];
-    8  -> 11 [label="c"];
-    8  -> 12 [label="ε"];
+    7 -> 8 [label="a"];  
+    8 -> 9 [label="b"];  
 
-    9  -> 9  [label="a"];
-    9  -> 10 [label="b"];
-    9  -> 11 [label="c"];
-    9  -> 12 [label="ε"];
+    9 -> 9  [label="a"]; 
 
-    10 -> 9  [label="a"];
-    10 -> 10 [label="b"];
-    10 -> 11 [label="c"];
-    10 -> 12 [label="ε"];
+    9  -> 10 [label="b"]; 
+    10 -> 9  [label="b"]; 
+    10 -> 9  [label="c"];
 
-    11 -> 9  [label="a"];
-    11 -> 10 [label="b"];
-    11 -> 11 [label="c"];
-    11 -> 12 [label="ε"];
-
-    12 -> 13 [label="a"];
-    13 -> 14 [label="b"];
-
-    14 -> 14 [label="a"];  
-    14 -> 15 [label="b"];  
-    14 -> 16 [label="c"]; 
-
-    15 -> 14 [label="b"];  
-    15 -> 14 [label="c"];  
-
-    16 -> 14 [label="c"]; 
-
-    17 -> 18 [label="a"];     
-    18 -> 19 [label="b"];     
-    19 -> 20 [label="c"];     
+    9  -> 11 [label="c"]; 
+    11 -> 9  [label="c"]; 
 }
